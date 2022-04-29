@@ -1,0 +1,19 @@
+{
+  "development": {
+    "url": "postgres://thrmffxg:V9VxP4BZFsLfF-Wvu8rhIylbf7c8xjA2@abul.db.elephantsql.com/thrmffxg"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
