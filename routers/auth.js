@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const bcrypt = require("bcrypt");
+const { toJWT } = require("../auth/jwt");
 const User = require("../models").user;
 
 const router = new Router();
@@ -47,7 +48,8 @@ router.post("/login", async (req, res, next) => {
 
     if (passwordMatch) {
       //
-      res.send("Congrats! you're logged in! :)");
+      const token = toJWT({ userId: user.id });
+      res.send({ message: "Congrats! you're logged in! :)", token });
       // We have to give this user something back to prove he has
       // authenticated. => JWT (json web token)
     } else {
