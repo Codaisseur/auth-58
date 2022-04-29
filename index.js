@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const User = require("./models").user;
+const Clothing = require("./models").clothing;
 const authRouter = require("./routers/auth");
 const authMiddleware = require("./auth/middleware");
 
@@ -29,6 +30,18 @@ app.get("/test", authMiddleware, (req, res) => {
     res.send(`hello ${req.user.username}`);
   } catch (e) {
     console.log(e.message);
+  }
+});
+
+app.get("/user/clothes", async (req, res, next) => {
+  try {
+    const users = await User.findAll({
+      include: [{ model: Clothing }],
+    });
+    res.send(users);
+  } catch (e) {
+    console.log(e.message);
+    next(e);
   }
 });
 

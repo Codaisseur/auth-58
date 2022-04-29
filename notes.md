@@ -26,3 +26,10 @@
 - Create and attach routers
 - Create routes
 - Start the app
+
+## Relation
+
+1:N
+
+user hasMany clothings
+clothings belongsTo user
